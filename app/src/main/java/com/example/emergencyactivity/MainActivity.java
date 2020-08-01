@@ -1,3 +1,4 @@
+//MySafeSpace
 package com.example.emergencyactivity;
 
 import androidx.annotation.NonNull;
