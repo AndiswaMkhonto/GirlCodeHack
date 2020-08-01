@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">EmergencyActivity</string>
     <string name="title_activity_emergencies">Emergencies</string>
     <!-- Strings used for fragments for navigation -->
@@ -11,4 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_geofence">Map</string>
     <string name="geofence_transition_invalid_type">null</string>
+
+
+    <string name="auth">Authenticate with fingerprint</string>
 </resources>

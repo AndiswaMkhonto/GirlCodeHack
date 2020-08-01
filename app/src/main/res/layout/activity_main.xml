@@ -15,6 +15,7 @@
         android:text="SOS"
         />
 
+89u
     <!--    <Button-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -32,6 +33,25 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:text="CUSTOM DURATION"-->
 <!--        android:id="@+id/durationAlert"/>-->
+=======
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LET'S CHAT"
+        android:id="@+id/chat"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STORE LOCATOR"
+        android:id="@+id/store"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CUSTOM HOW TO"
+        android:id="@+id/how"/>
+>>>>>>> updated
 
 <!--    <Button-->
 <!--        android:layout_width="wrap_content"-->

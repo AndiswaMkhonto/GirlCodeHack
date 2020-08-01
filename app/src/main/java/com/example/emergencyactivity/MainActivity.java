@@ -15,7 +15,7 @@ import com.tapadoo.alerter.Alerter;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button defaul,colored,icon,duration,wtitle,click;
+    Button defaul,chat_btn;
 //    GeofenceActivity g = new GeofenceActivity();
 //
 //
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 Alerter.create(MainActivity.this)
                         .setTitle("Default Alerter")
                         .setText("This is alerter")
-                        .setBackgroundColor(R.color.alert_default_error_background)
+                        //.setBackgroundColor(R.color.colorPrimary)
                         .show();
                 defaul.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,5 +75,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+       chat_btn = (Button) findViewById(R.id.chat);
+
+       chat_btn.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+           public void onClick(View view) {
+               Intent i = new Intent(MainActivity.this, LetsChatActivity.class);
+               startActivity(i);
+
+           }
+       });
     }
+
 }
