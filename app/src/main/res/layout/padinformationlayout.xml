@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Here’s how:
+Start with washing your hands with soap.
+Take the pad out of its wrapper.
+
+Peel the pad off the wrapper and remove the paper strip that covers the sticky part of the pad. Put the wrapper and strip in the bin.
+
+Press the sticky side of the pad into the centre of your knickers. If your pad has wings, wrap those around the sides of your panties.
+You’re good to go! Don’t forget to wash your hands when you’re done.Knowing how to wear a pad also means knowing how to change it. When you’re ready to change your pad, simply peel the pad off your knickers, wrap it up in toilet tissue or the wrapper it came in and bin it. Never flush it! This could cause the toilet to clog."/>
+
+</LinearLayout>

@@ -15,7 +15,8 @@ import com.tapadoo.alerter.Alerter;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button defaul,chat_btn;
+    Button defaul,chat_btn,howto_btn;
+    Button btnPad, btnTampon,btnCondom;
 //    GeofenceActivity g = new GeofenceActivity();
 //
 //
@@ -52,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
+
       defaul = (Button) findViewById(R.id.defaultAlert);
 
        defaul.setOnClickListener(new View.OnClickListener(){
-//
+
             @Override
             public void onClick(View view) {
                 Alerter.create(MainActivity.this)
@@ -87,10 +88,53 @@ public class MainActivity extends AppCompatActivity {
 
            }
        });
+
+       howto_btn = (Button) findViewById(R.id.how);
+
+       howto_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               setContentView(R.layout.activity_how_to);
+           }
+       });
+
+
+//        btnPad = (Button) findViewById(R.id.pad);
+//        btnTampon = (Button) findViewById(R.id.tampon);
+//        btnCondom = (Button) findViewById(R.id.condom);
+//
+//        btnPad.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //setContentView(R.layout.padinformationlayout);
+//                Intent i = new Intent(MainActivity.this,PadActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
+//        btnTampon.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View view) {
+//                //setContentView(R.layout.tampooninformationlayout);
+//                Intent i = new Intent(MainActivity.this,TamponActivity.class);
+//                startActivity(i);
+//
+//
+//
+//            }
+//        });
+//        btnCondom.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //setContentView(R.layout.condominformationlayout);
+//                Intent i = new Intent(MainActivity.this,TamponActivity.class);
+//                startActivity(i);
+//
+//
+//            }
+//        });
     }
-<<<<<<< HEAD
+
 
 }
-=======
-}
->>>>>>> a74a08cb7324c0bfc318382fbfe443bbc42983aa

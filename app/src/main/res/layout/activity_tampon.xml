@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What are pads, tampons, period underwear, and menstrual cups?
+Pads, tampons, period underwear, and cups let you go about your normal life during your period, without getting blood on your clothes or sheets. Tampons and cups go inside your vagina, pads are worn in your underwear, and you can wear period underwear instead of regular underwear on the days you have your period.
+
+Pads (sometimes called sanitary pads) are narrow pieces of material that you stick to your underwear. Some have “wings” or flaps that fold over the sides of your underwear to protect against leaks and stains. Some pads are made out of disposable materials — you use them once and throw them away. Other pads are made from fabric, and can be washed and reused.
+
+Tampons are little plugs made of cotton that fit inside your vagina and soak up menstrual blood. Some tampons come with an applicator that helps you put in the tampon. Tampons have a string attached to the end, so you can easily pull them out.
+
+Period underwear (AKA period panties) are just like regular underwear, except they have extra layers of fabric that absorb your menstrual blood during your period. There are different kinds of period underwear for light, medium, or heavy flow days. You can wear period panties on their own, or with a tampon or menstrual cup.
+
+Menstrual cups are shaped like little bells or bowls, and they’re made of rubber, silicone, or soft plastic. You wear the cup inside your vagina, and it collects menstrual blood. Most cups are reusable — you just empty it when you need to, wash it, and use it again. Other menstrual cups are disposable — you throw it away after one use or one period cycle.
+
+If you have an IUD, don’t use a menstrual cup. Using a menstrual cup can cause your IUD to move out of place."/>
+
+</LinearLayout>

@@ -18,6 +18,7 @@ import android.security.keystore.UserNotAuthenticatedException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
@@ -38,12 +39,18 @@ public class LetsChatActivity extends AppCompatActivity {
     Button virtual;
     public static final String TAG = LetsChatActivity.class.getName();
 
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lets_chat);
 
-        Executor newExecutor = Executors.newSingleThreadExecutor();
+        //Executor newExecutor = Executors.newSingleThreadExecutor();
+
+
 
 
 
@@ -52,30 +59,45 @@ public class LetsChatActivity extends AppCompatActivity {
         virtual = (Button) findViewById(R.id.virtualbuddy);
 
         //Start listening for authentication events//
+//
+//        final BiometricPrompt myBiometricPrompt = new BiometricPrompt(LetsChatActivity.this, newExecutor, new BiometricPrompt.AuthenticationCallback() {
+//            @Override
+//
+////onAuthenticationError is called when a fatal error occurrs//
+//
+//            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+//                super.onAuthenticationError(errorCode, errString);
+//                if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+//                } else {
+//
+////Print a message to Logcat//
+//
+//                    Log.d(TAG, "An unrecoverable error occurred");
+//                }
+//            }
+//
+////onAuthenticationSucceeded is called when a fingerprint is matched successfully//
+//
+//            @Override
+//            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+//                super.onAuthenticationSucceeded(result);
 
-        final BiometricPrompt myBiometricPrompt = new BiometricPrompt(LetsChatActivity.this, newExecutor, new BiometricPrompt.AuthenticationCallback() {
+        executor = ContextCompat.getMainExecutor(this);
+        biometricPrompt = new BiometricPrompt(LetsChatActivity.this,
+                executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
-
-//onAuthenticationError is called when a fatal error occurrs//
-
-            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+            public void onAuthenticationError(int errorCode,
+                                              @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                } else {
-
-//Print a message to Logcat//
-
-                    Log.d(TAG, "An unrecoverable error occurred");
-                }
+                Toast.makeText(getApplicationContext(),
+                        "Authentication error: " + errString, Toast.LENGTH_SHORT)
+                        .show();
             }
 
-//onAuthenticationSucceeded is called when a fingerprint is matched successfully//
-
             @Override
-            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+            public void onAuthenticationSucceeded(
+                    @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-
-//Print a message to Logcat//
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
@@ -85,34 +107,62 @@ public class LetsChatActivity extends AppCompatActivity {
                 startActivity(sendIntent);
 
 
-                Log.d(TAG, "Fingerprint recognised successfully");
+                //Log.d(TAG, "Fingerprint recognised successfully");
+
+                Toast.makeText(getApplicationContext(),
+                        "Authentication succeeded!", Toast.LENGTH_SHORT).show();
+
+
             }
-//onAuthenticationFailed is called when the fingerprint doesn’t match//
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-
-//Print a message to Logcat//
-
-                Log.d(TAG, "Fingerprint not recognised");
+                Toast.makeText(getApplicationContext(), "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show();
             }
         });
 
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my app")
+                .setSubtitle("Log in using your biometric credential")
+                //.setNegativeButtonText("Use account password")
+                .setDeviceCredentialAllowed(true)
+                .build();
+        
+
+        // Prompt appears when user clicks "Log in".
+        // Consider integrating with the keystore to unlock cryptographic operations,
+        // if needed by your app.
+
+//Print a message to Logcat//
+
+
+//onAuthenticationFailed is called when the fingerprint doesn’t match//
+
+//            @Override
+//            public void onAuthenticationFailed() {
+//                super.onAuthenticationFailed();
+
+//Print a message to Logcat//
+
+                //Log.d(TAG, "Fingerprint not recognised");
+
 //Create the BiometricPrompt instance//
 
-        final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-
-//Add some text to the dialog//
-
-                .setTitle("Add your fingerprint")
-                .setSubtitle("Fingerprint authentication")
-                .setDescription("If you see this sign use your fingerprint t authenticate")
-                .setNegativeButtonText("Cancel")
-
-//Build the dialog//
-
-                .build();
+//        final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+//
+////Add some text to the dialog//
+//
+//                .setTitle("Add your fingerprint")
+//                .setSubtitle("Fingerprint authentication")
+//                .setDescription("If you see this sign use your fingerprint t authenticate")
+//                .setNegativeButtonText("Cancel")
+//
+////Build the dialog//
+//
+//                .build();
 
 
         askT.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +184,7 @@ public class LetsChatActivity extends AppCompatActivity {
 //                        super.onAuthenticationSucceeded(result);
 //                        Log.d(TAG, "Fingerprint recognised successfully");
 
-                myBiometricPrompt.authenticate(promptInfo);
+                biometricPrompt.authenticate(promptInfo);
 
 
 
@@ -193,7 +243,7 @@ public class LetsChatActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                myBiometricPrompt.authenticate(promptInfo);
+                biometricPrompt.authenticate(promptInfo);
             }
         });
         virtual.setOnClickListener(new View.OnClickListener(){
